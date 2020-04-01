@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 //import our service
 import JeopardyService from "../../jeopardyService";
-import AnswerForm from "./AnswerForm";
+import GameBoard from "./GameBoard";
 
 class Jeopardy extends Component {
   //set our initial state and set up our service as this.client on this component
@@ -45,15 +45,13 @@ class Jeopardy extends Component {
 
   //display the results on the screen
   render() {
-    const category = this.state.data.category && this.state.data.category.title;
-
     return (
       <div className="Jeopardy">
-        <h2>{category}</h2>
-        <h3>${this.state.data.value}</h3>
-        <div className="clue">{this.state.data.question}</div>
-        <AnswerForm checkAnswer={this.checkAnswer} />
-        <div className="score">Score: ${this.state.score}</div>
+        <GameBoard
+          data={this.state.data}
+          score={this.state.score}
+          checkAnswer={this.checkAnswer}
+        />
       </div>
     );
   }
