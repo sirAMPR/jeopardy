@@ -3,7 +3,8 @@ const defaultState = {
   score: 0,
   category: "",
   value: 0,
-  solution: ""
+  solution: "",
+  answeredQuestions: []
 };
 
 const jeopardy = (state = defaultState, action) => {
@@ -17,6 +18,12 @@ const jeopardy = (state = defaultState, action) => {
         solution: action.question.answer
       };
       return Object.assign({}, state, newQuestionState);
+    case "ANSWERED_QUESTIONS":
+      const answeredQuestionsState = {
+        question: action.question,
+        pointValue: action.pointValue
+      };
+      return Object.assign({}, state, answeredQuestionsState);
     default:
       return state;
   }

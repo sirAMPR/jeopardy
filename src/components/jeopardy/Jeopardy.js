@@ -18,15 +18,6 @@ class Jeopardy extends Component {
     };
   }
 
-  // //get a new random question from the API and add it to the data object in state
-  // getNewQuestion() {
-  //   return this.client.getQuestion().then(result => {
-  //     this.setState({
-  //       data: result.data
-  //     });
-  //   });
-  // }
-
   //when the component mounts, get the first question
   componentDidMount() {
     this.props.getQuestion();
@@ -55,7 +46,7 @@ class Jeopardy extends Component {
           question={this.props.question}
           category={this.props.category}
           data={this.state.data}
-          score={this.state.score}
+          score={this.props.score}
           checkAnswer={this.checkAnswer}
         />
       </div>
