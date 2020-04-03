@@ -14,7 +14,7 @@ class Jeopardy extends Component {
     // this.client = new JeopardyService();
     this.state = {
       data: {},
-      score: 0
+      score: 0,
     };
   }
 
@@ -23,30 +23,27 @@ class Jeopardy extends Component {
     this.props.getQuestion();
   }
 
-  checkAnswer = answer => {
-    if (answer.toUpperCase() === this.state.data.answer.toUpperCase()) {
-      this.setState((state, props) => ({
-        score: state.score + state.data.value
-      }));
+  checkAnswer = (answer) => {
+    let score = this.state.score;
+    if (answer.toUpperCase() === this.props.solution.toUpperCase()) {
+      score += this.props.value;
     } else {
-      this.setState((state, props) => ({
-        score: state.score - state.data.value
-      }));
+      score -= this.props.value;
     }
-
-    this.getNewQuestion();
+    this.props.answeredQuestion(this.props.question, this.state.score, score);
+    this.setState({ score, answer: "" });
+    this.props.getQuestion();
   };
 
   //display the results on the screen
   render() {
-    console.log(this.props);
     return (
       <div className="Jeopardy">
         <GameBoard
           question={this.props.question}
           category={this.props.category}
-          data={this.state.data}
           score={this.props.score}
+          value={this.props.value}
           checkAnswer={this.checkAnswer}
         />
       </div>
@@ -54,15 +51,16 @@ class Jeopardy extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   question: state.question,
   score: state.score,
   category: state.category,
   value: state.value,
-  solution: state.solution
+  solution: state.solution,
+  answeredQuestions: state.answeredQuestions,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(JeopardyActions, dispatch);
 };
 
