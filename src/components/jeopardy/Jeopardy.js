@@ -43,6 +43,11 @@ class Jeopardy extends Component {
     this.props.getQuestion();
   };
 
+  handleSkip = (event) => {
+    event.preventDefault();
+    this.props.getQuestion();
+  };
+
   //display the results on the screen
   render() {
     return (
@@ -54,6 +59,7 @@ class Jeopardy extends Component {
           value={this.props.value}
           checkAnswer={this.checkAnswer}
         />
+        <button onClick={this.handleSkip}>Skip Question</button>
         <PreviousQuestions answeredQuestions={this.props.answeredQuestions} />
       </div>
     );
