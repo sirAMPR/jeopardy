@@ -3,7 +3,7 @@ import React from "react";
 function PreviousQuestions(props) {
   return (
     <div className="PreviousQuestions">
-      <h3>Previous Questions</h3>
+      <h3>Answered Questions</h3>
       {props.answeredQuestions && (
         <ol>
           {props.answeredQuestions.map((e) => (

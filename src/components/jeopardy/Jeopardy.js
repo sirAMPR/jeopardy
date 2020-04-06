@@ -55,7 +55,7 @@ class Jeopardy extends Component {
         <GameBoard
           question={this.props.question}
           category={this.props.category}
-          score={this.props.score}
+          score={this.state.score}
           value={this.props.value}
           checkAnswer={this.checkAnswer}
         />
