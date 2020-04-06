@@ -9,7 +9,7 @@ to run application: `npm start`
 
 2. Display the answered questions on the page in a list
 
-- show the precious score and new score with each answered question
+- show the previous score and new score with each answered question
 - show the correct answer and submitted answer
 - show the question and category
 

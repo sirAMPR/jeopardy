@@ -5,14 +5,22 @@ const getQuestionAction = (question) => ({
   question,
 });
 
-export const answeredQuestion = (question, previousScore, newScore) => (
-  dispatch
-) =>
+export const answeredQuestion = (
+  question,
+  previousScore,
+  newScore,
+  category,
+  solution,
+  answer
+) => (dispatch) =>
   dispatch({
     type: "ANSWERED_QUESTION",
     question,
     previousScore,
     newScore,
+    category,
+    solution,
+    answer,
   });
 
 export const getQuestion = () => (dispatch) => {

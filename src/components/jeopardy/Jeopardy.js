@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 //import our service
 import JeopardyService from "../../jeopardyService";
 import GameBoard from "./GameBoard";
+import PreviousQuestions from "./PreviousQuestions";
 import * as JeopardyActions from "../../actions";
 
 class Jeopardy extends Component {
@@ -30,7 +31,14 @@ class Jeopardy extends Component {
     } else {
       score -= this.props.value;
     }
-    this.props.answeredQuestion(this.props.question, this.state.score, score);
+    this.props.answeredQuestion(
+      this.props.question,
+      this.state.score,
+      score,
+      this.props.category,
+      this.props.solution,
+      answer
+    );
     this.setState({ score, answer: "" });
     this.props.getQuestion();
   };
@@ -46,6 +54,7 @@ class Jeopardy extends Component {
           value={this.props.value}
           checkAnswer={this.checkAnswer}
         />
+        <PreviousQuestions answeredQuestions={this.props.answeredQuestions} />
       </div>
     );
   }
