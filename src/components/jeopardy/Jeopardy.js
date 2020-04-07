@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 //import our service
-import JeopardyService from "../../jeopardyService";
 import GameBoard from "./GameBoard";
 import PreviousQuestions from "./PreviousQuestions";
 import * as JeopardyActions from "../../actions";
