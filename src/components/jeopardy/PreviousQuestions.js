@@ -4,23 +4,19 @@ function PreviousQuestions(props) {
   return (
     <div className="PreviousQuestions">
       <h3>Answered Questions</h3>
-      {props.answeredQuestions && (
-        <ol>
-          {props.answeredQuestions.map((e) => (
-            <li>
-              <h4>
-                {e.question} ({e.category})
-              </h4>
-              <ul>
-                <li>Previous Score: ${e.previousScore}</li>
-                <li>New Score: ${e.newScore}</li>
-                <li>Submitted Answer: {e.answer}</li>
-                <li>Correct Answer: {e.solution}</li>
-              </ul>
-            </li>
-          ))}
-        </ol>
-      )}
+      <ol>
+        <li>
+          <h4>
+            {props.question} ({props.category})
+          </h4>
+          <ul>
+            <li>Previous Score: ${props.previousScore}</li>
+            <li>New Score: ${props.newScore}</li>
+            <li>Submitted Answer: {props.answer}</li>
+            <li>Correct Answer: {props.solution}</li>
+          </ul>
+        </li>
+      </ol>
     </div>
   );
 }

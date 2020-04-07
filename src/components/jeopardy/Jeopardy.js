@@ -60,7 +60,18 @@ class Jeopardy extends Component {
           checkAnswer={this.checkAnswer}
         />
         <button onClick={this.handleSkip}>Skip Question</button>
-        <PreviousQuestions answeredQuestions={this.props.answeredQuestions} />
+        {this.props.answeredQuestions &&
+          this.props.answeredQuestions.map((e, index) => (
+            <PreviousQuestions
+              key={index}
+              question={e.question}
+              category={e.category}
+              previousScore={e.previousScore}
+              newScore={e.newScore}
+              answer={e.answer}
+              solution={e.solution}
+            />
+          ))}
       </div>
     );
   }
